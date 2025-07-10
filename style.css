@@ -1,0 +1,10 @@
+.pic{
+
+    margin-right: 5px;
+    height : 10px;
+    border-radius: 50%;
+}
+.result{
+   font-size: large;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

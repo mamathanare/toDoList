@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todolist</title>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+
+  input.first {
+    padding: 8px;
+    width: 200px;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 16px;
+    margin-left: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  .output {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+  }
+
+  .output button {
+    margin-left: 10px;
+    background-color: crimson;
+  }
+</style>
+
+</head>
+<body>
+  <input class="first" type="text" placeholder="enter the text">
+  <button onclick="add()">Add to list</button>
+  <p class="output"></p>
+
+  <script>
+    let tasks = [];
+
+    function add() {
+      const input = document.querySelector('.first');
+      const addtext = input.value.trim();
+
+      if (addtext !== "") {
+        tasks.push(addtext);
+        console.log(tasks);
+        input.value = "";
+        renderTasks();
+      } else {
+        alert("Please enter a valid task.");
+      }
+    }
+    function renderTasks(){
+        const output=document.querySelector('.output');
+        output.innerHTML = " ";
+        tasks.forEach((task,index)=>{
+            output.innerHTML +=`${task} <button onclick="deleteTasks(${index})">Delete</button><br>`;
+        });
+    }
+    function deleteTasks(index){
+        tasks.splice(index,1);
+        renderTasks();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Savya Technologies - Web and App Development Services">
+  <title>Savya Technologies</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f0f2f5;
+      color: #2c3e50;
+    }
+    header {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+    .logo {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      width: 60px;
+      height: auto;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    section h2 {
+      color: #2c5364;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    .video-section {
+      margin: 3rem auto;
+      text-align: center;
+    }
+    .video-section iframe {
+      width: 90%;
+      max-width: 640px;
+      height: 360px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    .flip-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .flip-box {
+      background-color: transparent;
+      width: 250px;
+      height: 200px;
+      perspective: 1000px;
+    }
+    .flip-box-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s ease-in-out;
+      transform-style: preserve-3d;
+    }
+    .flip-box:hover .flip-box-inner {
+      transform: rotateX(180deg) translateY(-10px);
+    }
+    .flip-box-front,
+    .flip-box-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .flip-box:nth-child(1) .flip-box-front {
+      background-color: #007BFF;
+      color: white;
+    }
+    .flip-box:nth-child(2) .flip-box-front {
+      background-color: #28a745;
+      color: white;
+    }
+    .flip-box:nth-child(3) .flip-box-front {
+      background-color: #17a2b8;
+      color: white;
+    }
+    .flip-box:nth-child(4) .flip-box-front {
+      background-color: #ff5722;
+      color: white;
+    }
+    .flip-box-back {
+      background-color: #ffffff;
+      color: #333;
+      transform: rotateX(180deg);
+    }
+    .gallery {
+      margin-top: 4rem;
+      text-align: center;
+    }
+    .gallery h2 {
+      margin-bottom: 1.5rem;
+    }
+    .gallery-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .gallery img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
+    .modal .close, .modal .prev, .modal .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      background: rgba(0,0,0,0.4);
+      padding: 10px;
+      border-radius: 50%;
+    }
+    .modal .close {
+      top: 5%;
+      right: 5%;
+      transform: none;
+    }
+    .modal .prev { left: 5%; }
+    .modal .next { right: 5%; }
+    .contact {
+      background-color: #ffffff;
+      margin-top: 5rem;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    }
+    .contact p,
+    .contact a {
+      margin: 0.5rem 0;
+      color: #2c3e50;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    .social-icons {
+      margin-top: 1rem;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .social-icons a img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s;
+    }
+    .social-icons a img:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      background: #2c5364;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+  </style>
+  <script>
+    let currentSlide = 0;
+    function openModal(index) {
+      currentSlide = index;
+      document.getElementById("modal").style.display = "flex";
+      updateModalImage();
+    }
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+    function updateModalImage() {
+      const images = document.querySelectorAll(".gallery img");
+      document.getElementById("modal-img").src = images[currentSlide].src;
+    }
+    function nextImage() {
+      const images = document.querySelectorAll(".gallery img");
+      currentSlide = (currentSlide + 1) % images.length;
+      updateModalImage();
+    }
+    function prevImage() {
+      const images = document.querySelectorAll(".gallery img");
+      currentSlide = (currentSlide - 1 + images.length) % images.length;
+      updateModalImage();
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Savya Logo" class="logo">
+    <h1>Savya Technologies</h1>
+    <p>Empowering Innovation through Web and App Solutions</p>
+  </header>
+
+  <section>
+    <div class="about">
+      <h2>About Us</h2>
+      <p>We are a passionate team of developers focused on crafting responsive websites and powerful mobile apps. At Savya Technologies, we deliver modern digital solutions that drive growth and innovation.</p>
+    </div>
+
+    <div class="video-section">
+      <h2>Watch What We Do</h2>
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Savya Technologies Video" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="services">
+      <h2>Our Services</h2>
+      <div class="flip-boxes">
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">Website Development</div>
+            <div class="flip-box-back">We create responsive and modern websites tailored for your business goals.</div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">Mobile Apps</div>
+            <div class="flip-box-back">We build Android & iOS apps with performance and user experience in mind.</div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">UI/UX Design</div>
+            <div class="flip-box-back">Intuitive design and user-friendly interfaces for your products.</div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">Tech Consulting</div>
+            <div class="flip-box-back">Guidance on tech stack, scalability, and digital strategies.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <h2>Savya Team Achievements</h2>
+      <div class="gallery-container">
+        <img src="images/hackoverflow.jpg" onclick="openModal(0)" alt="HackOverflow Hackathon">
+        <img src="images/vedicvision.jpg" onclick="openModal(1)" alt="Vedic Vision Hackathon">
+        <img src="images/googledev.jpg" onclick="openModal(2)" alt="Google Dev Challenge">
+      </div>
+    </div>
+
+    <div id="modal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="prev" onclick="prevImage()">&#10094;</span>
+      <img id="modal-img" src="" alt="Popup Image">
+      <span class="next" onclick="nextImage()">&#10095;</span>
+    </div>
+
+    <div class="contact">
+      <h2>Contact Us</h2>
+      <p>Email: contact@savyatech.com</p>
+      <p>Phone: +91-XXXXXXXXXX</p>
+      <p>Location: Andhra Pradesh, India</p>
+      <div class="social-icons">
+        <a href="https://wa.me/1234567890" target="_blank"><img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp"></a>
+        <a href="https://instagram.com" target="_blank"><img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram"></a>
+        <a href="https://linkedin.com" target="_blank"><img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Savya Technologies. All rights reserved.</p>
+  </footer>
+</body>
+</html>
